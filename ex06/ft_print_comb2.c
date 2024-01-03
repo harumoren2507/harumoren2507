@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_comb2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtoriyam <rtoriyam@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: riyam@student.42tokyo.jp  <riyam@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:55:15 by rtoriyam          #+#    #+#             */
-/*   Updated: 2023/08/17 17:24:04 by rtoriyam         ###   ########.fr       */
+/*   Updated: 2024/01/03 17:30:22 by riyam@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	ft_print_comb2(void)
 	}
 }
 
-//	int	main(void)
-//	{
-//	t_print_comb2(); 
-//	write(1, "\n", 1);
-//	return (0);
-//	}
+	int	main(void)
+	{
+	ft_print_comb2(); 
+	write(1, "\n", 1);
+	return (0);
+	}
