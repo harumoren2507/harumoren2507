@@ -20,3 +20,10 @@ int    ft_is_space(char to_find, char* str)
     }
     return 0;
 }
+
+/*
+
+
+
+
+*/

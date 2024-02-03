@@ -1,8 +1,7 @@
 #include <unistd.h>
 void    ft_only_z(void)
 {
-        char z = 'z';
-        write (1, &z, 1);
+        write (1, "z", 1);
 }
 
 int main(void)
@@ -10,3 +9,6 @@ int main(void)
         ft_only_z();
         return 0;
 }
+
+
+// なんで　write (1, 'z', 1);は不可なのか？
