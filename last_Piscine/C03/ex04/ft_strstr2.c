@@ -6,30 +6,110 @@
 /*   By: harumoren2507 <kuroshiro0725@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 21:26:19 by harumoren25       #+#    #+#             */
-/*   Updated: 2024/02/04 21:43:01 by harumoren25      ###   ########.fr       */
+/*   Updated: 2024/02/05 22:08:52 by harumoren25      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strstr(char *haystack, char *needle)
+#include <stdio.h>
+
+char *strstr(char *haystack, char *needle)
 {
-    unsigned int i;
+    unsigned int    i;
+    unsigned int    j;
 
-    unsigned int j;
-
-    if (needle[0] = '\0')
-        return haystack;
     i = 0;
+
+    if (*needle == '\0')
+        return haystack;
+    
     while (haystack[i] != '\0')
     {
         j = 0;
-        while (haystack[i + j] == needle[j] && haystack[i + j] != '\0') {
-            // needleの最後まで一致したかチェック
-            if (needle[j + 1] == '\0') {
-                // 一致した場合は、その位置のポインタを返す
-                return &haystack[i];
-            }
+        while (haystack[i + j] == needle[j])
+        {
+            if (needle[j + 1] == '\0')
+                return (&haystack[i]);
             j++;
         }
         i++;
     }
+    return 0;
 }
+
+int main(void)
+{
+    char haystack[] = "komuro, kei";
+    char needle[] = "kei";
+
+    char* result;
+
+    result = strstr(haystack, needle);
+
+    if (result != NULL) 
+    {
+        printf("Found: '%s'\n", result);
+    } 
+    else 
+    {
+
+        printf("Not found.\n");
+    }
+
+    return 0;
+}
+
+
+/*
+unsigned intを使う意図は主に2つあります。
+一つは、変数が負の値を取らないことを保証するため、
+もう一つは、使用可能な範囲を非負の数のみに拡張するためです。
+
+負の値を取らない
+unsigned intは符号なし整数を表します。
+つまり、この型の変数には正の数または0しか格納できません。
+プログラム中で、例えば配列のインデックスやカウンタとして変数を使用する場合、
+通常、その値が負になることは意図されていません。
+
+iやjのような変数が負の値を取ると、
+不正なメモリアクセスやプログラムのクラッシュを引き起こす可能性があります。
+
+符号なし整数を使うことで、これらの変数が負の値を取ることをコンパイラレベルで防ぐことができます。
+
+使用可能な範囲の拡張
+整数型には、符号付き（int）と符号なし（unsigned int）の2種類があります。
+
+符号付き整数では、利用可能なビットの一つを符号（正か負か）の表現に使用するため、
+表現できる数の範囲は負の数から正の数までです。
+
+一方、符号なし整数では、すべてのビットを数の大きさの表現に使用するため、
+より大きな正の数を扱うことができます。これにより、例えば非常に大きな配列のインデックスや、非常に高いカウント値を正確に扱うことが可能になります。
+
+実践的な観点
+プログラムにおいてunsigned intを使用することは、
+開発者がその変数が取りうる値の範囲について意図的に考え、
+設計していることを示します。この型を使用することで、意図しない負の値の使用を防ぎ、
+エラーやバグの可能性を減らすことができます。また、変数の意図された用途をコードを読む人に対してより明確に伝えることができます。
+
+
+
+*出力
+Found: 'kei, komuro'
+となるのですか。
+keiだけではないのですか？
+ChatGPT
+strstr関数が"Found: 'kei, komuro'"と出力する理由は、
+この関数がneedleがhaystack内で見つかった場所の先頭ポインタを返すからです。
+
+この場合、needleである"kei"がhaystackの"kei, komuro"内で見つかった
+最初の位置の先頭を指すポインタを返します。そして、そのポインタから始まる文字列が出力されます。
+つまり、needleが見つかった場所からhaystackの残りの部分全てが出力されるわけです。
+
+具体的には、strstr関数は単にneedleの文字列が開始する場所を見つけ出すだけであり、
+その部分文字列を返すのではなく、
+見つかった位置からの残りのhaystack文字列全体を返します。
+
+したがって、"kei"が見つかった場合、
+その位置から始まる"kei, komuro"全体がprintf関数によって出力されます。
+
+
+*/
