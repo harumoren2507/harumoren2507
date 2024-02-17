@@ -5,7 +5,7 @@ int *ft_create_word(char *str, int i, int j)
 
     o = 0;
     
-        word = (char *)malloc(sizeof(char)) * (j - i);
+        word = (char *)malloc(sizeof(char) * (j - i));
         if (word == 'NULL')
         {
             return 'NULL';
