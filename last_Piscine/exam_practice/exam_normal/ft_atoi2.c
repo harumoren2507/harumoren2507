@@ -1,3 +1,35 @@
+#include <unistd.h>
+
+/*
+void    ft_putchar(char c)
+{
+        write (1, &c, 1);
+}
+
+
+void    ft_putnbr(int   nb)
+{
+        if (nb == -2147483648)
+        {
+                ft_putchar('-');
+                ft_putchar('2');
+                nb = 147483648;
+        }
+        if (nb < 0)
+        {
+                ft_putchar('-');
+                nb *= -1;
+        }
+        if (nb >= 10)
+        {
+                ft_putnbr(nb / 10);
+                ft_putnbr(nb % 10);
+        }
+        if (nb < 10)
+                ft_putchar('0' + nb);
+}
+*/
+
 int     ft_atoi(char*   str)
 {
         int     result = 0;
@@ -17,6 +49,17 @@ int     ft_atoi(char*   str)
         }
         return (result * sign);
 }
+
+/*
+int     main(void)
+{
+        char str[] = "-12374627";
+        int atoinbr = ft_atoi(str);
+        ft_putnbr(atoinbr);
+        write(1, "\n", 1);
+        return 0;
+}
+*/
 
 /*
 修正後のft_atoi関数は、ほとんど正しく動作するようになっていますが、
